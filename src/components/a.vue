@@ -10,8 +10,20 @@
 export default {
   methods: {
     handleClick () {
-      this.$emit('isLogFn','log')
+      this.$emit('isLogFn','open')
     }
+  },
+  created () {
+    console.log('a组件被created')
+  },
+  mounted () {
+    console.log('a组件被mounted')
+  },
+  updated () {
+    console.log('a组件被updated')
+  },
+  destroyed () {
+    console.log('a组件被destroyed')
   }
 }
 </script>
@@ -22,5 +34,10 @@ export default {
   height: 200px;
   border: 1px solid #000;
   margin: 0 auto;
+  text-align: center;
 }
+.adiv button {
+    display: block;
+    margin: 50px auto
+  }
 </style>

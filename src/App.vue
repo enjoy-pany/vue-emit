@@ -1,19 +1,22 @@
 <template>
   <div id="app">
     <aPage @isLogFn = "lisLogFn"></aPage>
-    <bPage :isLog = "login"></bPage>
+    <bPage @isLogFn = "lisLogFn" :isLog = "id" v-if="login"></bPage>
   </div>
 </template>
 
 <script>
 
 import aPage from './components/a.vue'
+//const aPage = resolve => require(['./components/a.vue'], resolve)
 import bPage from './components/b.vue'
+//const bPage = resolve => require(['./components/b.vue'], resolve)
 
 export default {
   data () {
     return {
-      login: 'false'
+      id: 1,
+      login: false
     }
   },
   name: 'app',
@@ -23,10 +26,24 @@ export default {
   },
   methods: {
     lisLogFn (data) {
-      if (data == 'log') {
-        this.login = 'true'
+      if (data == 'open') {
+        this.login = true
+      } else if (data == 'close') {
+        this.login = false
       }
     }
+  },
+  created () {
+    console.log('父组件被created')
+  },
+  mounted () {
+    console.log('父组件被mounted')
+  },
+  updated () {
+    console.log('父组件被updated')
+  },
+  destroyed () {
+    console.log('父组件被destroyed')
   }
 }
 </script>
